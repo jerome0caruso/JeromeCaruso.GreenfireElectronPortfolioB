@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "easyqrcodejs": "^4.4.7",
+    "easyqrcodejs-nodejs": "^4.4.2",
     "express": "^4.17.1"
   },
   "devDependencies": {
