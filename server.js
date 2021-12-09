@@ -11,7 +11,6 @@ app.use(
 app.use(express.json());
 
 app.post('/',(req, res) => {
-    //console.log(createQR(req.body))
     createQR(req.body).then(data => {
         res.send(data)
     }).catch(err => {
@@ -23,10 +22,14 @@ const cryptoNames = ['Solana', 'Algorand', 'Tezos'];
 
 function createQR(data) {
     return Promise.all(data.map((cry, index) => {
+        console.log(cry['logo'])
         const options = {
             text: `${cryptoNames[index]}: ${cry.price}`,
             width: 100,
             height: 100,
+            logo: cry['logo'], 
+		    logoWidth: 30, // fixed logo width. default is `width/3.5`
+		    logoHeight: 30, // fixed logo height. default is `heigth/3.5`
         };
         const qrcode = new QRCode(options);
         return qrcode.toDataURL();
